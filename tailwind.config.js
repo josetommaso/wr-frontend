@@ -3,13 +3,13 @@ module.exports = {
   theme: {
     extend: {},
     colors: {
-      primary: "#12232E",
-      secondary: "#007CC7",
-      tertiary: "#4DA8DA",
-      dark: "#203647",
-      light: "#EEFBFB",
+      primary: "#41729F",
+      secondary: "#5885AF",
+      dark: "#274472",
+      light: "#C3E0E5",
       white: "#fff",
-      darkerWhite: "#EEFBFB",
+      black: "#000",
+      darkerWhite: "#F5F0F6",
     },
     fontFamily: {
       base: ["Arvo", "serif"],

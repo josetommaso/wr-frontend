@@ -1,41 +1,61 @@
 import React from "react";
 
-const WhitelistCard = () => {
+const WhitelistCard = ({
+  asset,
+  date_end,
+  max_amount,
+  min_amount,
+  name,
+  url,
+}) => {
+  const category = true;
+  const type = true;
+
+  const formatDate = new Date(date_end);
+
   return (
-    <div className="block p-6 text-primary bg-tertiary rounded-lg shadow-md mb-4 text-sm overflow-hidden">
-      <h5 className="mb-4 text-2xl font-bold tracking-tight">Whitelist Name</h5>
+    <div className="flex flex-col justify-between items-start p-6 text-dark bg-light rounded-lg shadow-md mb-4 text-sm overflow-hidden">
+      <h5 className="mb-4 text-2xl font-bold tracking-tight">{name}</h5>
 
-      <p className="mb-2">
-        Type: <b>ICO</b>
-      </p>
-
-      <p className="mb-2">
-        Category: <b>Category</b>
-      </p>
-
-      <div>
+      {type ? (
         <p className="mb-2">
-          Finish: <b>date</b>
+          Type: <b>ICO</b>
         </p>
-      </div>
+      ) : null}
 
-      <p>
-        Min buy: <b>min amount</b>
+      {category ? (
+        <p className="mb-2">
+          Category: <b>Category</b>
+        </p>
+      ) : null}
+
+      <p className="mb-2">
+        Ending: <b>{formatDate.toLocaleString("en-GB")}</b>
       </p>
 
-      <p>
-        Max buy: <b>max amount</b>
-      </p>
+      {min_amount ? (
+        <p>
+          Min buy: <b>{min_amount}</b>
+        </p>
+      ) : null}
 
-      <p>
-        Asset: <b>asset</b>
-      </p>
+      {max_amount ? (
+        <p>
+          Max buy: <b>{max_amount}</b>
+        </p>
+      ) : null}
+
+      {asset ? (
+        <p>
+          Asset: <b>{asset}</b>
+        </p>
+      ) : null}
 
       <a
-        href={`//google.com`}
+        href={`//${url}`}
         rel="noreferrer"
         target="_blank"
-        className="mt-4 inline-block py-2 px-4 border border-primary text-sm font-medium rounded-md text-primary bg-indigo-600 hover:bg-primary hover:text-darkerWhite transition-all focus:outline-none"
+        className="mt-4 inline-block py-2 px-4 border border-dark text-sm font-medium rounded-md text-dark bg-indigo-600 hover:bg-dark hover:text-white transition-all focus:outline-none"
       >
         Go to whitelist
       </a>
