@@ -2,7 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
-.bg-gradient {
+html {
+  height: 100%;
+}
+
+body {
   background: rgb(2, 13, 29);
   background: linear-gradient(
     180deg,
