@@ -14,7 +14,7 @@ const WhitelistCard = ({
   const formatDate = new Date(date_end);
 
   return (
-    <div className="flex flex-col justify-between items-start p-6 text-dark bg-light rounded-lg shadow-md mb-4 text-sm overflow-hidden">
+    <div className="flex flex-col justify-between items-start p-6 text-white bg-dark rounded-lg shadow-md mb-4 text-sm overflow-hidden">
       <h5 className="mb-4 text-2xl font-bold tracking-tight">{name}</h5>
 
       {type ? (
@@ -55,7 +55,7 @@ const WhitelistCard = ({
         href={`//${url}`}
         rel="noreferrer"
         target="_blank"
-        className="mt-4 inline-block py-2 px-4 border border-dark text-sm font-medium rounded-md text-dark hover:bg-dark hover:text-white transition-all focus:outline-none"
+        className="mt-4 inline-block py-2 px-4 border border-white text-sm font-medium rounded-md text-white hover:bg-white hover:text-dark transition-all focus:outline-none"
       >
         Go to whitelist
       </a>

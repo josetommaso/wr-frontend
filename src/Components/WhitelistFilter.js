@@ -3,9 +3,9 @@ import React from "react";
 const WhitelistFilter = () => {
   return (
     <aside className="w-full">
-      <div class="overflow-y-auto py-6 px-4 bg-light rounded">
+      <div class="overflow-y-auto py-6 px-4 bg-dark rounded">
         <div className="mb-4">
-          <h3 className="text-xl font-bold text-dark">Search</h3>
+          <h3 className="text-xl font-bold text-white">Search</h3>
           <div className="mt-3">
             <label for="table-search" class="sr-only">
               Search
@@ -35,7 +35,7 @@ const WhitelistFilter = () => {
           </div>
         </div>
         <div>
-          <h3 className="text-xl font-bold">Sort by</h3>
+          <h3 className="text-xl font-bold text-white">Sort by</h3>
         </div>
       </div>
     </aside>

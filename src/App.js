@@ -10,7 +10,7 @@ const client = new ApolloClient({
 function App() {
   return (
     <ApolloProvider client={client}>
-      <div className="bg-dark h-screen">
+      <div className="bg-gradient h-screen">
         <Navbar />
         <div className="container mx-auto">
           <Whitelists />
