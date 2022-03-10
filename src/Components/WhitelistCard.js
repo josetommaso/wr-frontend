@@ -55,7 +55,7 @@ const WhitelistCard = ({
         href={`//${url}`}
         rel="noreferrer"
         target="_blank"
-        className="mt-4 inline-block py-2 px-4 border border-dark text-sm font-medium rounded-md text-dark bg-indigo-600 hover:bg-dark hover:text-white transition-all focus:outline-none"
+        className="mt-4 inline-block py-2 px-4 border border-dark text-sm font-medium rounded-md text-dark hover:bg-dark hover:text-white transition-all focus:outline-none"
       >
         Go to whitelist
       </a>
