@@ -1,4 +1,5 @@
 import React from "react";
+import Countdown from "react-countdown";
 
 const WhitelistCard = ({
   asset,
@@ -14,8 +15,8 @@ const WhitelistCard = ({
   const formatDate = new Date(date_end);
 
   return (
-    <div className="flex flex-col justify-between items-start p-6 text-white bg-dark rounded-lg shadow-md mb-4 text-sm overflow-hidden">
-      <h5 className="mb-4 text-2xl font-bold tracking-tight">{name}</h5>
+    <div className="flex flex-col justify-between items-start relative p-6 text-white bg-dark rounded-lg shadow-md text-sm overflow-hidden">
+      <h5 className="text-2xl font-bold mb-2">{name}</h5>
 
       {type ? (
         <p className="mb-2">
@@ -50,6 +51,10 @@ const WhitelistCard = ({
           Asset: <b>{asset}</b>
         </p>
       ) : null}
+
+      <div className="absolute top-0 right-0 p-2 rounded-bl-md text-darkerWhite bg-primary countdown">
+        <Countdown date={formatDate} daysInHours zeroPadTime={2} />
+      </div>
 
       <a
         href={`//${url}`}

@@ -1,54 +1,41 @@
-import React from "react";
+import React, { useContext } from "react";
 import WhitelistCard from "./WhitelistCard";
 import WhitelistFilter from "./WhitelistFilter";
-import { useQuery, gql } from "@apollo/client";
+import WhitelistContext from "../context/WhitelistContext";
 import logoIcon from "../assets/loading.svg";
 
-const WHITELISTS = gql`
-  query GetWhitelists {
-    whitelists {
-      data {
-        id
-        attributes {
-          name
-          date_end
-          asset
-          min_amount
-          max_amount
-          url
-        }
-      }
-    }
-  }
-`;
-
 const Whitelists = () => {
-  const { loading, error, data } = useQuery(WHITELISTS);
-
-  if (error) return <p>Error :(</p>;
+  const { allWhitelists, loading, error } = useContext(WhitelistContext);
 
   return (
-    <div className="grid mx-5 md:mx-0 md:grid-cols-4 gap-4 py-16">
-      <div className="col-span-3">
-        {loading ? (
+    <div className="grid mx-5 md:mx-0 md:grid-cols-8 gap-4 pt-16">
+      <div className="col-span-12 md:col-span-2 lg:col-span-2">
+        <WhitelistFilter />
+      </div>
+      <div className="col-span-12 md:col-span-4 lg:col-span-6">
+        {loading && (
           <img className="mx-auto mt-5" src={logoIcon} alt="loading icon" />
-        ) : (
-          <div className="grid lg:grid-cols-2 gap-5">
-            {data.whitelists.data.map((whitelist) => (
+        )}
+        {error && <p className="text-white">Error =(</p>}
+        {allWhitelists.length >= 1 ? (
+          <div className="grid md:grid-cols-2 gap-5">
+            {allWhitelists.map((whitelist) => (
               <WhitelistCard
                 key={whitelist.id}
-                name={whitelist.attributes.name}
-                date_end={whitelist.attributes.date_end}
-                max_amount={whitelist.attributes.min_amount}
-                url={whitelist.attributes.url}
-                asset={whitelist.attributes.asset}
+                name={whitelist.name}
+                date_end={whitelist.dateEnd}
+                max_amount={whitelist.maxAmount}
+                min_amount={whitelist.minAmount}
+                url={whitelist.url}
+                asset={whitelist.asset}
               />
             ))}
           </div>
+        ) : (
+          <p className="text-white text-xl text-center font-bold">
+            No whitelists available
+          </p>
         )}
-      </div>
-      <div className="col-span-1">
-        <WhitelistFilter />
       </div>
     </div>
   );

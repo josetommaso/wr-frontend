@@ -2,8 +2,18 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  font-family: "digital-7";
+  src: local("digital-7"), url("./fonts/digital-7.ttf") format("truetype");
+}
+
 html {
   height: 100%;
+}
+
+.countdown {
+  font-family: "digital-7";
+  font-size: 1.5rem;
 }
 
 body {
