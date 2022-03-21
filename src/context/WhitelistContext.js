@@ -1,19 +1,6 @@
-import { gql, useLazyQuery } from "@apollo/client";
+import { useLazyQuery } from "@apollo/client";
+import { WHITELISTS } from "../GraphQL/queries";
 import { React, createContext, useState, useEffect } from "react";
-
-const WHITELISTS = gql`
-  query getWhitelist {
-    whitelists {
-      id
-      name
-      dateEnd
-      minAmount
-      maxAmount
-      asset
-      url
-    }
-  }
-`;
 
 const WhitelistContext = createContext();
 

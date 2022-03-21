@@ -8,25 +8,17 @@ const WhitelistCard = ({
   min_amount,
   name,
   url,
+  type,
 }) => {
-  const category = true;
-  const type = true;
-
   const formatDate = new Date(date_end);
 
   return (
     <div className="flex flex-col justify-between items-start relative p-6 text-white bg-dark rounded-lg shadow-md text-sm overflow-hidden">
       <h5 className="text-2xl font-bold mb-2">{name}</h5>
 
-      {type ? (
+      {type.length ? (
         <p className="mb-2">
-          Type: <b>ICO</b>
-        </p>
-      ) : null}
-
-      {category ? (
-        <p className="mb-2">
-          Category: <b>Category</b>
+          {type.map((type, index) => (index ? ", " : "") + type)}
         </p>
       ) : null}
 

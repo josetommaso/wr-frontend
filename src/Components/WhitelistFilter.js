@@ -3,16 +3,27 @@ import {
   ENDING_SOONEST,
   ENDING_LATEST,
   SORT_BY_NEWER,
+  SORT_BY_TYPE,
+  WHITELISTS,
 } from "../GraphQL/queries";
-import { gql, useApolloClient } from "@apollo/client";
+import { useApolloClient } from "@apollo/client";
 import React, { useState, useContext } from "react";
 import WhitelistContext from "../context/WhitelistContext";
+import Select from "react-select";
+
+const options = [
+  { value: "ICO", label: "ICO" },
+  { value: "TOKEN", label: "TOKEN" },
+  { value: "NFT", label: "NFT" },
+  { value: "IDO", label: "IDO" },
+];
 
 const WhitelistFilter = () => {
   const client = useApolloClient();
   const { setAllWhitelists } = useContext(WhitelistContext);
   const [whitelistName, setWhitelistName] = useState("");
   const [selectedRadioBtn, setSelectedRadioBtn] = useState("newer");
+  const [selectedOption, setSelectedOption] = useState(null);
 
   const isRadioSelected = (value) => selectedRadioBtn === value;
 
@@ -44,12 +55,31 @@ const WhitelistFilter = () => {
     }
   };
 
+  const handlerSelect = async (selectedOption) => {
+    if (selectedOption.length) {
+      setSelectedOption(selectedOption);
+
+      const types = selectedOption.map((option) => option.value);
+
+      const { data } = await client.query({
+        query: SORT_BY_TYPE,
+        variables: {
+          types,
+        },
+      });
+
+      setAllWhitelists(data.whitelists);
+    } else {
+      const { data } = await client.query({
+        query: WHITELISTS,
+      });
+      setAllWhitelists(data.whitelists);
+    }
+  };
+
   return (
-    <aside className="w-full">
-      <div
-        className="overflow-y-auto p-5
-        px-6 bg-dark rounded flex gap-5 flex-col"
-      >
+    <aside className="w-full m-h-full">
+      <div className="p-5 min-h-full px-6 bg-dark rounded flex gap-5 flex-col">
         <div>
           <div className="mt-3">
             <label
@@ -126,6 +156,15 @@ const WhitelistFilter = () => {
             <label htmlFor="ending-latest" className="text-white ml-2">
               Ending Latest
             </label>
+          </div>
+          <div>
+            <h3 className="text-md font-bold text-white my-3">Type</h3>
+            <Select
+              defaultValue={selectedOption}
+              onChange={handlerSelect}
+              options={options}
+              isMulti
+            />
           </div>
         </div>
       </div>

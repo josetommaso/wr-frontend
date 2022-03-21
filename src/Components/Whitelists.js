@@ -28,6 +28,7 @@ const Whitelists = () => {
                 min_amount={whitelist.minAmount}
                 url={whitelist.url}
                 asset={whitelist.asset}
+                type={whitelist.type}
               />
             ))}
           </div>

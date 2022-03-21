@@ -1,10 +1,26 @@
 import { gql } from "@apollo/client";
 
+export const WHITELISTS = gql`
+  query getWhitelist {
+    whitelists {
+      id
+      name
+      type
+      dateEnd
+      minAmount
+      maxAmount
+      asset
+      url
+    }
+  }
+`;
+
 export const GET_WHITELISTS_WITH_NAME = gql`
   query getWhitelistsWithNameName($whitelistName: String!) {
     whitelists(where: { name_contains: $whitelistName }) {
       id
       name
+      type
       dateEnd
       minAmount
       maxAmount
@@ -19,6 +35,7 @@ export const ENDING_SOONEST = gql`
     whitelists(orderBy: dateEnd_ASC) {
       id
       name
+      type
       dateEnd
       minAmount
       maxAmount
@@ -33,6 +50,7 @@ export const ENDING_LATEST = gql`
     whitelists(orderBy: dateEnd_DESC) {
       id
       name
+      type
       dateEnd
       minAmount
       maxAmount
@@ -47,11 +65,27 @@ export const SORT_BY_NEWER = gql`
     whitelists(orderBy: createdAt_ASC) {
       id
       name
+      type
       dateEnd
       minAmount
       maxAmount
       asset
       url
+    }
+  }
+`;
+
+export const SORT_BY_TYPE = gql`
+  query sortByType($types: [Types!]) {
+    whitelists(where: { type_contains_all: $types }) {
+      id
+      name
+      dateEnd
+      minAmount
+      maxAmount
+      asset
+      url
+      type
     }
   }
 `;
