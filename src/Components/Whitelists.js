@@ -9,10 +9,11 @@ const Whitelists = () => {
 
   return (
     <div className="grid mx-5 md:mx-0 md:grid-cols-8 gap-4 pt-16">
-      <div className="col-span-12 md:col-span-2 lg:col-span-2">
+      <div className="col-span-12 relative">
         <WhitelistFilter />
       </div>
-      <div className="col-span-12 md:col-span-4 lg:col-span-6">
+      <div className="col-span-12 md:col-span-2 lg:col-span-2 relative"></div>
+      <div className="col-span-12 md:col-span-10">
         {loading && (
           <img className="mx-auto mt-5" src={logoIcon} alt="loading icon" />
         )}
