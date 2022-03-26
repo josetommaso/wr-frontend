@@ -12,7 +12,7 @@ function App() {
   return (
     <ApolloProvider client={client}>
       <Navbar />
-      <div className="container lg:w-3/4 mx-auto">
+      <div className="container lg:w-3/4 mx-auto pb-10">
         <WhitelistProvider>
           <Whitelists />
         </WhitelistProvider>

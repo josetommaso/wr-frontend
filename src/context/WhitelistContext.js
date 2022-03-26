@@ -15,7 +15,8 @@ const WhitelistProvider = ({ children }) => {
     getAllWhitelists();
 
     if (data) {
-      setAllWhitelists(data.whitelists);
+      const { whitelists } = data;
+      setAllWhitelists(whitelists);
     }
   }, [data, getAllWhitelists, loading]);
 

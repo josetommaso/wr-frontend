@@ -8,19 +8,10 @@
 }
 
 html {
-  height: 100%;
+  background: rgb(2, 13, 29);
 }
 
 .countdown {
   font-family: "digital-7";
   font-size: 1.5rem;
-}
-
-body {
-  background: rgb(2, 13, 29);
-  background: linear-gradient(
-    180deg,
-    rgba(2, 13, 29, 1) 0%,
-    rgba(24, 30, 44, 1) 100%
-  );
 }

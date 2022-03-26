@@ -2,7 +2,7 @@ import { gql } from "@apollo/client";
 
 export const WHITELISTS = gql`
   query getWhitelist {
-    whitelists {
+    whitelists(orderBy: createdAt_DESC) {
       id
       name
       type

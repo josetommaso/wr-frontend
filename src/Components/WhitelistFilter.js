@@ -73,15 +73,16 @@ const WhitelistFilter = () => {
       const { data } = await client.query({
         query: WHITELISTS,
       });
+      setSelectedRadioBtn("newer");
       setAllWhitelists(data.whitelists);
     }
   };
 
   return (
-    <aside className="w-full m-h-full">
-      <div className="p-5 min-h-full px-6 bg-dark rounded flex gap-5 flex-col">
-        <div>
-          <div className="mt-3">
+    <aside className="w-full m-h-full sticky left-0 top-5">
+      <div className="p-5 min-h-full px-6 bg-dark rounded flex gap-5">
+        <div className="flex-grow basis-full">
+          <div>
             <label
               htmlFor="table-search"
               className="text-lg font-bold text-white inline-block mb-3"
@@ -89,6 +90,7 @@ const WhitelistFilter = () => {
               Search by name
             </label>
             <form
+              className="flex"
               onSubmit={async (e) => {
                 e.preventDefault();
                 const { data } = await client.query({
@@ -104,11 +106,11 @@ const WhitelistFilter = () => {
                 type="text"
                 id="table-search"
                 onChange={(e) => setWhitelistName(e.target.value)}
-                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm mr-2 rounded-lg block w-full p-2  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                 placeholder="Search whitelist"
               />
               <button
-                className="bg-secondary text-white text-sm font-bold py-2 px-4 rounded mt-2"
+                className="bg-secondary text-white text-sm font-bold py-2 px-4 rounded"
                 type="submit"
               >
                 Search
@@ -116,7 +118,7 @@ const WhitelistFilter = () => {
             </form>
           </div>
         </div>
-        <div>
+        <div className="flex-grow basis-full text-center">
           <h3 className="text-md font-bold text-white mb-2">Sort by</h3>
           <div>
             <input
@@ -157,15 +159,17 @@ const WhitelistFilter = () => {
               Ending Latest
             </label>
           </div>
-          <div>
-            <h3 className="text-md font-bold text-white my-3">Type</h3>
-            <Select
-              defaultValue={selectedOption}
-              onChange={handlerSelect}
-              options={options}
-              isMulti
-            />
-          </div>
+        </div>
+        <div className="flex-grow basis-full">
+          <h3 className="text-md font-bold text-white mb-3">Type</h3>
+          <Select
+            defaultValue={selectedOption}
+            onChange={handlerSelect}
+            options={options}
+            isMulti
+            menuPortalTarget={document.body}
+            styles={{ menuPortal: (base) => ({ ...base, zIndex: 9999 }) }}
+          />
         </div>
       </div>
     </aside>

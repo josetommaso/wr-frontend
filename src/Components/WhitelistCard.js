@@ -13,7 +13,7 @@ const WhitelistCard = ({
   const formatDate = new Date(date_end);
 
   return (
-    <div className="flex flex-col justify-between items-start relative p-6 text-white bg-dark rounded-lg shadow-md text-sm overflow-hidden">
+    <div className="flex flex-col justify-between items-start relative p-6 pt-10 text-white bg-dark rounded-lg shadow-md text-sm overflow-hidden">
       <h5 className="text-2xl font-bold mb-2">{name}</h5>
 
       {type.length ? (
