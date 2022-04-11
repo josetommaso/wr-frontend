@@ -12,14 +12,13 @@ const Whitelists = () => {
       <div className="col-span-12 relative">
         <WhitelistFilter />
       </div>
-      <div className="col-span-12 md:col-span-2 lg:col-span-2 relative"></div>
       <div className="col-span-12 md:col-span-10">
         {loading && (
           <img className="mx-auto mt-5" src={logoIcon} alt="loading icon" />
         )}
         {error && <p className="text-white">Error =(</p>}
         {allWhitelists.length >= 1 ? (
-          <div className="grid md:grid-cols-2 gap-5">
+          <div className="grid md:grid-cols-3 gap-5">
             {allWhitelists.map((whitelist) => (
               <WhitelistCard
                 key={whitelist.id}
