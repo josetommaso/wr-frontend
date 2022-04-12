@@ -1,4 +1,4 @@
-www.whitelist-report.com
+www.whitelists-report.com
 
 # Getting Started with Create React App
 
