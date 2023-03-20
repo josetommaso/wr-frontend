@@ -1,4 +1,4 @@
-https://whitelist-report.com/
+https://wr-frontend.vercel.app/
 
 # Getting Started with Create React App
 
